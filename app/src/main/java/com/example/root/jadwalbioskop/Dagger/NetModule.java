@@ -3,8 +3,8 @@ package com.example.root.jadwalbioskop.Dagger;
 import com.example.root.jadwalbioskop.API.ApiClient;
 import com.example.root.jadwalbioskop.Main.KotaRequest;
 import com.example.root.jadwalbioskop.Main.KotaRequestImpl;
-import com.example.root.jadwalbioskop.API.Movie.MovieRequest;
-import com.example.root.jadwalbioskop.API.Movie.MovieRequestImpl;
+import com.example.root.jadwalbioskop.Main.MovieRequest;
+import com.example.root.jadwalbioskop.Main.MovieRequestImpl;
 
 import javax.inject.Singleton;
 

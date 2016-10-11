@@ -3,6 +3,7 @@ package com.example.root.jadwalbioskop.API;
 import com.example.root.jadwalbioskop.API.Kota.KotaResponse;
 import com.example.root.jadwalbioskop.API.Movie.MovieResponse;
 import com.example.root.jadwalbioskop.API.dao.KotaDao;
+import com.example.root.jadwalbioskop.API.dao.MovieDao;
 
 
 import java.util.List;
@@ -21,5 +22,5 @@ public interface ApiInterface {
     Observable<KotaDao> kotaList();
 
     @GET("/api/jadwal-bioskop?id={id}")
-    Observable<MovieResponse> movieList(@Path("id") String idKota);
+    Observable<MovieDao> movieList(@Path("id") String idKota);
 }

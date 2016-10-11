@@ -11,6 +11,5 @@ public class BaseRequest {
     protected ApiClient apiClient;
     public BaseRequest() {
         apiClient = Injector.component.apiClient();
-
     }
 }

@@ -15,7 +15,7 @@ import rx.Observable;
  */
 
 public interface ApiInterface {
-    @GET("/api/jadwal-bioskop")
+    @GET("api/jadwal-bioskop")
     Observable<KotaResponse> kotaList();
 
     @GET("/api/jadwal-bioskop?id={id}")

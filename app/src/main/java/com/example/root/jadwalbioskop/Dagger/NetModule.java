@@ -20,7 +20,7 @@ public class NetModule {
     @Singleton
     @Provides
     ApiClient provideApiClient() {
-        return new ApiClient("http://ibacor.com/api/jadwal-bioskop/");
+        return new ApiClient("http://ibacor.com/");
     }
 
     @Singleton

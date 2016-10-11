@@ -35,7 +35,6 @@ public class KotaRequestImpl extends BaseRequest implements KotaRequest {
 
             });
         apiClient.toString();
-        Log.d("Response : ", apiClient.toString());
         return observable;
     }
 }

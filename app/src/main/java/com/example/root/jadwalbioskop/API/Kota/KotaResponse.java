@@ -30,6 +30,11 @@ public class KotaResponse {
 
 
     public static class DataBean {
+        public DataBean(String id, String kota) {
+            this.id = id;
+            this.kota = kota;
+        }
+
         public String id;
         public String kota;
 

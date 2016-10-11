@@ -31,7 +31,6 @@ public class KotaResponse {
 
     public static class DataBean {
 
-
         public String id;
         public String kota;
 

@@ -1,5 +1,7 @@
 package com.example.root.jadwalbioskop.API.Kota;
 
+import android.util.Log;
+
 import com.example.root.jadwalbioskop.API.ApiClient;
 import com.example.root.jadwalbioskop.API.BaseRequest;
 import com.example.root.jadwalbioskop.API.Kota.KotaResponse.DataBean;
@@ -33,6 +35,7 @@ public class KotaRequestImpl extends BaseRequest implements KotaRequest {
 
             });
         apiClient.toString();
+        Log.d("Response : ", apiClient.toString());
         return observable;
     }
 }

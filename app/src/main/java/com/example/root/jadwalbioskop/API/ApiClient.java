@@ -1,5 +1,7 @@
 package com.example.root.jadwalbioskop.API;
 
+import android.util.Log;
+
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
@@ -30,7 +32,8 @@ public class ApiClient {
                 .client(client)
                 .baseUrl(baseUrl)
                 .build();
-        apiInterface =retrofit.create(ApiInterface.class);
+
+        apiInterface = retrofit.create(ApiInterface.class);
     }
 
     private class MyInterceptor implements Interceptor {
@@ -38,6 +41,7 @@ public class ApiClient {
         public Response intercept(Chain chain) throws IOException {
             Request request = chain.request();
             Response res = chain.proceed(request);
+            Log.d("Response2 : ", res.body().toString());
             return res;
         }
     }

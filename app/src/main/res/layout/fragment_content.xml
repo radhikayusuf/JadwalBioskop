@@ -1,0 +1,29 @@
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="vm"
+            type="com.example.root.jadwalbioskop.Main.Fragment.ViewModel.ContentFragmentVM"/>
+    </data>
+<FrameLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.root.jadwalbioskop.Main.Fragment.ContentFragment">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="RecyclerView Here"/>
+
+    <android.support.v7.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:adapter="@{vm.rcAppAdapter}"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        app:layoutManager="@{vm.bGridLayoutManager}">
+
+    </android.support.v7.widget.RecyclerView>
+</FrameLayout>
+</layout>

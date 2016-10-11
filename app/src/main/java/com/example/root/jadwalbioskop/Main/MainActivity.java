@@ -24,7 +24,7 @@ public class MainActivity extends GitsActivity<MainActivityVM, ActivityMainBindi
 
     @Override
     public MainActivityVM getViewModel() {
-        return new MainActivityVM(this);
+        return new MainActivityVM(this, getSupportFragmentManager());
     }
 
     @Override

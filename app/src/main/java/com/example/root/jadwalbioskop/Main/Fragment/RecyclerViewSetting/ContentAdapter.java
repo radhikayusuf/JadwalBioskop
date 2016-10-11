@@ -4,6 +4,11 @@ import android.databinding.ViewDataBinding;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 
+import com.example.root.jadwalbioskop.API.dao.KotaDao;
+import com.example.root.jadwalbioskop.Main.KotaRequest;
+import com.example.root.jadwalbioskop.R;
+import com.example.root.jadwalbioskop.databinding.CardContentRowBinding;
+
 import java.util.List;
 
 import id.gits.mvvmcore.adapter.GitsAdapter;
@@ -13,34 +18,30 @@ import id.gits.mvvmcore.viewmodel.GitsRowVM;
  * Created by root on 11/10/16.
  */
 
-public class ContentAdapter extends GitsAdapter {
+public class ContentAdapter extends GitsAdapter<KotaDao.DATA, ContentVM, CardContentRowBinding> {
 
-    public ContentAdapter(List collection) {
+
+    public ContentAdapter(List<KotaDao.DATA> collection) {
         super(collection);
     }
 
     @Override
-    public GitsRowVM createViewModel(AppCompatActivity activity, ViewDataBinding binding, Object item, int position) {
-        return null;
+    public ContentVM createViewModel(AppCompatActivity activity, CardContentRowBinding binding, KotaDao.DATA item, int position) {
+        return new ContentVM(activity, binding, item);
     }
 
     @Override
     public int getLayoutRes() {
-        return 0;
+        return R.layout.card_content_row;
     }
 
     @Override
-    public void render(ViewDataBinding binding, GitsRowVM viewModel, Object item) {
-
+    public void render(CardContentRowBinding binding, ContentVM viewModel, KotaDao.DATA item) {
+        binding.setVm(viewModel);
     }
 
     @Override
-    public void onRowClick(Object data, int position) {
-
-    }
-
-    @Override
-    public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
+    public void onRowClick(KotaDao.DATA data, int position) {
 
     }
 }

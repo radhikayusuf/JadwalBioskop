@@ -21,8 +21,8 @@ import dagger.Component;
 public interface DiComponent {
         ApiClient apiClient();
 
-        void Inject(MainActivityVM mainActivityVM);
+        //void Inject(MainActivityVM mainActivityVM);
 
-        //void inject(ContentFragmentVM contentViewModel);
+        void Inject(ContentFragmentVM contentViewModel);
 
 }

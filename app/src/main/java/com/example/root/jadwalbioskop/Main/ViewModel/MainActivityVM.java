@@ -31,8 +31,7 @@ import rx.schedulers.Schedulers;
 
 public class MainActivityVM extends GitsVM{
 
-    @Inject
-    KotaRequest kotaRequest;
+
 
     public String bg = "http://media.comicbook.com/2016/05/captain-america-civil-war-02082016-182755.png";
     private static Context ctx;
@@ -41,37 +40,10 @@ public class MainActivityVM extends GitsVM{
     public MainActivityVM(Context context, FragmentManager fragmentManager) {
         super(context);
 
-        Injector.component.Inject(this);
-
         viewPagerAdapter = new ViewPagerAdapter(fragmentManager);
         viewPagerAdapter.addFragment(new ContentFragment());
         viewPagerAdapter.addFragment(new SettingFragment());
         ctx = context;
-
-
-        kotaRequest.requestKota()
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribeOn(Schedulers.newThread())
-                .subscribe(new Subscriber<KotaRequest.KotaViewResponse>() {
-                    @Override
-                    public void onCompleted() {
-                        Log.e( "onCompleted: ","complete" );
-                    }
-
-                    @Override
-                    public void onError(Throwable e) {
-                        Log.e( "onError: ",e.toString() );
-
-                    }
-
-                    @Override
-                    public void onNext(KotaRequest.KotaViewResponse kotaViewResponse) {
-                        Log.e("onNext: ", kotaViewResponse.status);
-                        Log.e("onNext: ", kotaViewResponse.data.get(0).kota);
-
-                    }
-                });
-
     }
 
 

@@ -2,8 +2,10 @@ package com.example.root.jadwalbioskop.API;
 
 import com.example.root.jadwalbioskop.API.Kota.KotaResponse;
 import com.example.root.jadwalbioskop.API.Movie.MovieResponse;
+import com.example.root.jadwalbioskop.API.dao.KotaDao;
 
 
+import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.http.GET;
@@ -16,7 +18,7 @@ import rx.Observable;
 
 public interface ApiInterface {
     @GET("/api/jadwal-bioskop")
-    Observable<KotaResponse> kotaList();
+    Observable<KotaDao> kotaList();
 
     @GET("/api/jadwal-bioskop?id={id}")
     Observable<MovieResponse> movieList(@Path("id") String idKota);

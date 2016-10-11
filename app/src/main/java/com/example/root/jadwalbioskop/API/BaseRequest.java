@@ -1,6 +1,5 @@
 package com.example.root.jadwalbioskop.API;
 
-import com.example.root.jadwalbioskop.API.Kota.KotaRequest;
 import com.example.root.jadwalbioskop.Dagger.Injector;
 
 /**
@@ -11,6 +10,5 @@ public class BaseRequest {
     protected ApiClient apiClient;
     public BaseRequest() {
         apiClient = Injector.component.apiClient();
-
     }
 }

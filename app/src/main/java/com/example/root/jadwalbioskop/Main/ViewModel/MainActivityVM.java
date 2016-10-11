@@ -8,22 +8,18 @@ import android.util.Log;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-import com.example.root.jadwalbioskop.API.ApiClient;
-import com.example.root.jadwalbioskop.API.ApiInterface;
-import com.example.root.jadwalbioskop.API.Kota.KotaRequest;
+import com.example.root.jadwalbioskop.API.dao.KotaDao;
+import com.example.root.jadwalbioskop.JadwalBioskop;
+import com.example.root.jadwalbioskop.Main.KotaRequest;
 import com.example.root.jadwalbioskop.API.Kota.KotaResponse;
 import com.example.root.jadwalbioskop.Dagger.Injector;
 import com.example.root.jadwalbioskop.Main.Adapter.ViewPagerAdapter;
 import com.example.root.jadwalbioskop.Main.Fragment.ContentFragment;
 import com.example.root.jadwalbioskop.Main.Fragment.SettingFragment;
-import com.example.root.jadwalbioskop.Main.MainActivity;
 import com.squareup.picasso.Picasso;
-
-import java.util.List;
 
 import javax.inject.Inject;
 
-import id.gits.mvvmcore.activity.GitsActivity;
 import id.gits.mvvmcore.viewmodel.GitsVM;
 import rx.Subscriber;
 import rx.android.schedulers.AndroidSchedulers;
@@ -45,7 +41,7 @@ public class MainActivityVM extends GitsVM{
     public MainActivityVM(Context context, FragmentManager fragmentManager) {
         super(context);
 
-        Injector.component.inject(this);
+        Injector.component.Inject(this);
 
         viewPagerAdapter = new ViewPagerAdapter(fragmentManager);
         viewPagerAdapter.addFragment(new ContentFragment());
@@ -56,20 +52,23 @@ public class MainActivityVM extends GitsVM{
         kotaRequest.requestKota()
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.newThread())
-                .subscribe(new Subscriber<KotaResponse.DataBean>() {
+                .subscribe(new Subscriber<KotaRequest.KotaViewResponse>() {
                     @Override
                     public void onCompleted() {
-
+                        Log.e( "onCompleted: ","complete" );
                     }
 
                     @Override
                     public void onError(Throwable e) {
+                        Log.e( "onError: ",e.toString() );
 
                     }
 
                     @Override
-                    public void onNext(KotaResponse.DataBean dataBean) {
-                        Toast.makeText(mContext, "ID "+ dataBean.getId(), Toast.LENGTH_SHORT).show();
+                    public void onNext(KotaRequest.KotaViewResponse kotaViewResponse) {
+                        Log.e("onNext: ", kotaViewResponse.status);
+                        Log.e("onNext: ", kotaViewResponse.data.get(0).kota);
+
                     }
                 });
 

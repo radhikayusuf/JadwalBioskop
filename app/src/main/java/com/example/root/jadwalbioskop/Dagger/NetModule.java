@@ -1,8 +1,8 @@
 package com.example.root.jadwalbioskop.Dagger;
 
 import com.example.root.jadwalbioskop.API.ApiClient;
-import com.example.root.jadwalbioskop.API.Kota.KotaRequest;
-import com.example.root.jadwalbioskop.API.Kota.KotaRequestImpl;
+import com.example.root.jadwalbioskop.Main.KotaRequest;
+import com.example.root.jadwalbioskop.Main.KotaRequestImpl;
 import com.example.root.jadwalbioskop.API.Movie.MovieRequest;
 import com.example.root.jadwalbioskop.API.Movie.MovieRequestImpl;
 
@@ -20,7 +20,7 @@ public class NetModule {
     @Singleton
     @Provides
     ApiClient provideApiClient() {
-        return new ApiClient("http://ibacor.com/api/jadwal-bioskop/");
+        return new ApiClient("http://ibacor.com");
     }
 
     @Singleton

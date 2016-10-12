@@ -8,22 +8,44 @@ import java.util.List;
 
 public class MovieDao {
     public String status,kota,date;
-    public List<data> datas;
+    public List<DetailMovieDao> datas;
 
-    public class data {
-        public String movie,poster,genre,duration;
-        public List<jadwal> jadwals;
-
-        public class jadwal{
-            public String bioskop,harga;
-            public List<String> jams;
-        }
-    }
-
-    public MovieDao(String status, String kota, String date, List<data> datas) {
+    public MovieDao(String status, String kota, String date, List<DetailMovieDao> datas) {
         this.status = status;
         this.kota = kota;
         this.date = date;
+        this.datas = datas;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public String getKota() {
+        return kota;
+    }
+
+    public void setKota(String kota) {
+        this.kota = kota;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
+
+    public List<DetailMovieDao> getDatas() {
+        return datas;
+    }
+
+    public void setDatas(List<DetailMovieDao> datas) {
         this.datas = datas;
     }
 }

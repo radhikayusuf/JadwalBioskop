@@ -69,7 +69,9 @@ public class ContentFragmentVM extends GitsVM {
 
                     @Override
                     public void onNext(KotaRequest.KotaViewResponse kotaViewResponse) {
+                        detailKotabackup.clear();
                         detailKotabackup.addAll(kotaViewResponse.datas);
+                        detailKotaDaos.clear();
                         detailKotaDaos.addAll(kotaViewResponse.datas);
                         //mDataKota.add(kotaViewResponse);
                         rcAppAdapter.notifyDataSetChanged();
@@ -88,8 +90,10 @@ public class ContentFragmentVM extends GitsVM {
                 @Override
                 public void onTextChanged(CharSequence s, int start, int before, int count)
                 {
+                    //detailKotabackup.addAll(detailKotaDaos);
+                    detailKotaDaos.clear();
                     observableString.set(s.toString());
-                    detailKotaDaos = onSearch(observableString.toString(),detailKotaDaos);
+                    detailKotaDaos.addAll(onSearch(observableString.get().toUpperCase(),detailKotabackup));
                     rcAppAdapter.notifyDataSetChanged();
                 }
             });
@@ -107,23 +111,39 @@ public class ContentFragmentVM extends GitsVM {
         return observableString.get();
     }
 
+
+
+
     public static List<DetailKotaDao> onSearch(String search , List<DetailKotaDao> detailTemporary){
         List<DetailKotaDao> detailKotaSearch = new ArrayList<>();
-        if(!search.equalsIgnoreCase("") || search != null){
-            for (int i = 0;i < detailTemporary.size();i++){
-                for (int j = 0;j < detailTemporary.get(i).getKota().length()- 1;j++){
-                    String chardata = String.valueOf(detailTemporary.get(i).getKota().charAt(j));
-                    if(chardata.equalsIgnoreCase(search)){
-                        detailKotaSearch.add(detailTemporary.get(i));
-                        break;
-                    }
+
+        if(!search.isEmpty() && detailTemporary.size() != 0){
+            detailKotaDaos.clear();
+            detailKotaSearch.clear();
+            for(int x=0; x < detailTemporary.size(); x++){
+                if(detailTemporary.get(x).getKota().contains(search)){
+                    detailKotaSearch.add(detailTemporary.get(x));
                 }
             }
             return detailKotaSearch;
-        }else {
+        }else{
             return detailTemporary;
-
         }
+//        if(!search.equalsIgnoreCase("") || search != null){
+//            for (int i = 0;i < detailTemporary.size();i++){
+//                for (int j = 0;j < detailTemporary.get(i).getKota().length()- 1;j++){
+//                    String chardata = String.valueOf(detailTemporary.get(i).getKota().charAt(j));
+//                    if(chardata.equalsIgnoreCase(search)){
+//                        detailKotaSearch.add(detailTemporary.get(i));
+//                        break;
+//                        }
+//                }
+//            }
+//            return detailKotaSearch;
+//        }else {
+//            return detailTemporary;
+//
+//        }
     }
 
 }

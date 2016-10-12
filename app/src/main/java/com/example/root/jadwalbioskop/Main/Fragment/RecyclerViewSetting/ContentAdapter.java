@@ -51,6 +51,7 @@ public class ContentAdapter extends GitsAdapter<DetailKotaDao, ContentVM, CardCo
         //Log.d("Hello1","");
         Intent i = new Intent(mContext, MovieList.class);
         i.putExtra("id", data.getId());
+        i.putExtra("title", data.getKota());
         mContext.startActivity(i);
     }
 

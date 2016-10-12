@@ -23,7 +23,8 @@ public class MovieList extends GitsActivity<MovieListVM, ActivityMovieListBindin
     public MovieListVM getViewModel() {
         Intent i = getIntent();
         String id = i.getStringExtra("id");
-        return new MovieListVM(this, id);
+        String title = i.getStringExtra("title");
+        return new MovieListVM(this, id, title);
     }
 
     @Override

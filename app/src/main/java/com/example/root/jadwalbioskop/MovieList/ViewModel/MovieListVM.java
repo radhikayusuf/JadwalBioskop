@@ -1,13 +1,17 @@
 package com.example.root.jadwalbioskop.MovieList.ViewModel;
 
+import android.app.Activity;
 import android.content.Context;
 import android.support.v7.widget.GridLayoutManager;
 import android.util.Log;
+import android.view.View;
+import android.widget.ImageView;
 
 import com.example.root.jadwalbioskop.API.Movie.MovieResponse;
 import com.example.root.jadwalbioskop.API.dao.DetailMovieDao;
 import com.example.root.jadwalbioskop.API.dao.MovieDao;
 import com.example.root.jadwalbioskop.Dagger.Injector;
+import com.example.root.jadwalbioskop.MovieList.MovieList;
 import com.example.root.jadwalbioskop.MovieList.MovieRequest;
 import com.example.root.jadwalbioskop.MovieList.RecycleView.MovieAdapter;
 import com.google.common.util.concurrent.AbstractScheduledService;
@@ -30,19 +34,28 @@ public class MovieListVM extends GitsVM {
 
     @Inject
     MovieRequest movieRequest;
+    public ImageView.OnClickListener click;
     List<DetailMovieDao> jadwalBeen = new ArrayList<>();
     public MovieAdapter movieAdapter;
     public GridLayoutManager gridLayoutManager;
+    public String title = "";
 
-    public MovieListVM(Context context, String id) {
+    public MovieListVM(Context context, String id, String title) {
         super(context);
         Injector.component.InjectMovie(this);
 
+        this.title = title;
 
         Log.d("IDnya : ",id);
         movieAdapter = new MovieAdapter(jadwalBeen);
         gridLayoutManager = new GridLayoutManager(context, 2);
 
+        click = new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ((Activity) mContext).finish();
+            }
+        };
 
         movieRequest.requestMovie(id)
                 .observeOn(AndroidSchedulers.mainThread())
@@ -66,4 +79,6 @@ public class MovieListVM extends GitsVM {
                 });
 
     }
+
+
 }

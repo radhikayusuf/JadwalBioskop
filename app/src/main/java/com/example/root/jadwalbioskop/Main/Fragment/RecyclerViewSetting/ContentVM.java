@@ -14,8 +14,11 @@ import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.CardView;
 import android.util.Log;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.root.jadwalbioskop.API.dao.DetailKotaDao;
 import com.example.root.jadwalbioskop.API.dao.KotaDao;
@@ -36,15 +39,24 @@ import id.gits.mvvmcore.viewmodel.GitsRowVM;
 public class ContentVM extends GitsRowVM<DetailKotaDao, CardContentRowBinding>{
     private static Context context;
     public String kota;
+    public String id;
     public String no;
     public String url;
+    public View.OnClickListener click;
 
     public ContentVM(AppCompatActivity activity, CardContentRowBinding binding, DetailKotaDao item, Integer posisi) {
         super(activity, binding, item);
         kota = item.kota;
         no = String.valueOf(posisi);
         url = "http://www.morefoods.hol.es/Kota/"+kota+".jpg";
+        id = item.getId();
         context = mContext;
+        click = new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(mContext, kota +" "+ id, Toast.LENGTH_SHORT).show();
+            }
+        };
     }
 
     @BindingAdapter({"setBG"})
@@ -62,7 +74,7 @@ public class ContentVM extends GitsRowVM<DetailKotaDao, CardContentRowBinding>{
 
     @BindingAdapter({"setImage"})
     public static void setImage(final LinearLayout iv, String url){
-        System.out.println("URLnya "+url);
+//        System.out.println("URLnya "+url);
 //        Picasso.with(context)
 //                .load(url)
 //                .into(new Target() {

@@ -5,6 +5,7 @@ import android.databinding.BindingAdapter;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.view.ViewPager;
 import android.util.Log;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -37,8 +38,7 @@ import rx.schedulers.Schedulers;
 public class MainActivityVM extends GitsVM{
 
 
-
-    public String bg = "http://media.comicbook.com/2016/05/captain-america-civil-war-02082016-182755.png";
+    public View.OnClickListener click;
     private static Context ctx;
     public ViewPagerAdapter viewPagerAdapter;
     public HashMap<String,String> url_maps = new HashMap<String, String>();
@@ -46,15 +46,22 @@ public class MainActivityVM extends GitsVM{
     public MainActivityVM(Context context, FragmentManager fragmentManager) {
         super(context);
 
+        url_maps.put("Civil War", "http://media.comicbook.com/2016/05/captain-america-civil-war-02082016-182755.png");
         url_maps.put("Hannibal", "http://static2.hypable.com/wp-content/uploads/2013/12/hannibal-season-2-release-date.jpg");
         url_maps.put("Big Bang Theory", "http://tvfiles.alphacoders.com/100/hdclearart-10.png");
         url_maps.put("House of Cards", "http://cdn3.nflximg.net/images/3093/2043093.jpg");
         url_maps.put("Game of Thrones", "http://images.boomsbeat.com/data/images/full/19640/game-of-thrones-season-4-jpg.jpg");
 
         viewPagerAdapter = new ViewPagerAdapter(fragmentManager);
-        viewPagerAdapter.addFragment(new ContentFragment());
         viewPagerAdapter.addFragment(new SettingFragment());
+        viewPagerAdapter.addFragment(new ContentFragment());
         ctx = context;
+        click = new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(mContext,"viewpager",Toast.LENGTH_SHORT).show();
+            }
+        };
     }
 
 

@@ -3,6 +3,8 @@ package com.example.root.jadwalbioskop.Main.Fragment.RecyclerViewSetting;
 import android.databinding.ViewDataBinding;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
+import android.widget.Toast;
 
 import com.example.root.jadwalbioskop.API.dao.DetailKotaDao;
 import com.example.root.jadwalbioskop.API.dao.KotaDao;
@@ -43,7 +45,8 @@ public class ContentAdapter extends GitsAdapter<DetailKotaDao, ContentVM, CardCo
 
     @Override
     public void onRowClick(DetailKotaDao data, int position) {
-
+        Toast.makeText(mContext, mCollection.get(position).getKota() +" "+ mCollection.get(position).getId(), Toast.LENGTH_SHORT).show();
+        Log.d("Hello1","");
     }
 
 }

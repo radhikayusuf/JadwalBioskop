@@ -13,9 +13,10 @@
     tools:context="com.example.root.jadwalbioskop.Main.Fragment.SettingFragment">
 
     <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <Button
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="@{vm.onclick}"
         android:text="Setting" />
 
 </FrameLayout>

@@ -16,11 +16,11 @@ public interface MovieRequest {
 
     class MovieViewResponse{
         public String status,kota,date;
-        public List<MovieDao.data> datas;
+        public List<data> datas;
 
         private class data {
             public String movie,poster,genre,duration;
-            public List<MovieDao.data.jadwal> jadwals;
+            public List<jadwal> jadwals;
 
             private class jadwal{
                 public String bioskop,harga;
@@ -28,7 +28,7 @@ public interface MovieRequest {
             }
         }
 
-        public MovieViewResponse(String status, String kota, String date, List<MovieDao.data> datas) {
+        public MovieViewResponse(String status, String kota, String date, List<data> datas) {
             this.status = status;
             this.kota = kota;
             this.date = date;

@@ -53,8 +53,8 @@ public class MainActivityVM extends GitsVM{
         url_maps.put("Game of Thrones", "http://images.boomsbeat.com/data/images/full/19640/game-of-thrones-season-4-jpg.jpg");
 
         viewPagerAdapter = new ViewPagerAdapter(fragmentManager);
-        viewPagerAdapter.addFragment(new SettingFragment());
         viewPagerAdapter.addFragment(new ContentFragment());
+        viewPagerAdapter.addFragment(new SettingFragment());
         ctx = context;
         click = new View.OnClickListener() {
             @Override

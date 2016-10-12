@@ -15,6 +15,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.CardView;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -42,7 +43,7 @@ public class ContentVM extends GitsRowVM<DetailKotaDao, CardContentRowBinding>{
     public String id;
     public String no;
     public String url;
-    public View.OnClickListener click;
+    public Button.OnClickListener click;
 
     public ContentVM(AppCompatActivity activity, CardContentRowBinding binding, DetailKotaDao item, Integer posisi) {
         super(activity, binding, item);
@@ -61,9 +62,7 @@ public class ContentVM extends GitsRowVM<DetailKotaDao, CardContentRowBinding>{
 
     @BindingAdapter({"setBG"})
     public static void setBG(CardView cardView, String no){
-        int a = 0;
-        a = Integer.parseInt(no);
-//        System.out.println("HasilParse"+a);
+        int a = Integer.parseInt(no);
 
         if(a%2==0){
             cardView.setBackgroundColor(Color.WHITE);

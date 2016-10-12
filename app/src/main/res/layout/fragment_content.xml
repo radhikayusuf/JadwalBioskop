@@ -8,13 +8,49 @@
             type="com.example.root.jadwalbioskop.Main.Fragment.ViewModel.ContentFragmentVM"/>
     </data>
 
-    <android.support.v7.widget.RecyclerView
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:adapter="@{vm.rcAppAdapter}"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior"
-        app:layoutManager="@{vm.bGridLayoutManager}">
+        android:orientation="vertical"
+        android:background="#2424">
+
+        <LinearLayout
+            android:background="#fff"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:orientation="vertical"
+            android:padding="10dp"
+            android:elevation="10dp">
+
+            <android.support.design.widget.TextInputLayout
+                android:background="@android:color/transparent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColorHint="#fff">
+                <EditText
+                    android:textColor="#fff"
+                    android:background="@android:color/transparent"
+                    android:hint="Find Your City"
+                    android:padding="10dp"
+                    android:paddingTop="20dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+            </android.support.design.widget.TextInputLayout>
+        </LinearLayout>
+
+
+
+        <android.support.v7.widget.RecyclerView
+            android:elevation="10dp"
+            android:layout_margin="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            app:adapter="@{vm.rcAppAdapter}"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior"
+            app:layoutManager="@{vm.bGridLayoutManager}">
 
     </android.support.v7.widget.RecyclerView>
-
+    </LinearLayout>
 </layout>

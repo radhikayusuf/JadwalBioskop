@@ -1,5 +1,6 @@
 package com.example.root.jadwalbioskop.Main.Fragment.ViewModel;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.databinding.BindingAdapter;
 import android.databinding.BindingConversion;
@@ -48,6 +49,7 @@ public class ContentFragmentVM extends GitsVM {
     public ContentFragmentVM(Context context) {
         super(context);
         Injector.component.Inject(this);
+
 
         rcAppAdapter = new ContentAdapter(detailKotaDaos);
         bGridLayoutManager = new LinearLayoutManager(mContext);

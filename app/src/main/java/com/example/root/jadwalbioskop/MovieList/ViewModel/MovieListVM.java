@@ -1,6 +1,7 @@
 package com.example.root.jadwalbioskop.MovieList.ViewModel;
 
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.support.v7.widget.GridLayoutManager;
 import android.util.Log;
@@ -27,7 +28,7 @@ import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
 
 /**
- * Created by Varokah on 10/12/2016.
+ * Created by Varokah & Radhika on 10/12/2016.
  */
 
 public class MovieListVM extends GitsVM {
@@ -39,11 +40,16 @@ public class MovieListVM extends GitsVM {
     public MovieAdapter movieAdapter;
     public GridLayoutManager gridLayoutManager;
     public String title = "";
+    ProgressDialog progressDialog;
 
     public MovieListVM(Context context, String id, String title) {
         super(context);
         Injector.component.InjectMovie(this);
-
+        progressDialog = new ProgressDialog(mContext);
+        progressDialog.setMessage("Please wait ...");
+        progressDialog.setTitle("Loading Data");
+        progressDialog.setCancelable(false);
+        progressDialog.show();
         this.title = title;
 
         Log.d("IDnya : ",id);
@@ -69,12 +75,14 @@ public class MovieListVM extends GitsVM {
                     @Override
                     public void onError(Throwable e) {
                         //Log.e("Errornya ",e.getMessage());
+                        progressDialog.dismiss();
                     }
 
                     @Override
                     public void onNext(MovieRequest.MovieViewResponse movieViewResponse) {
                         jadwalBeen.addAll(movieViewResponse.datas);
                         movieAdapter.notifyDataSetChanged();
+                        progressDialog.dismiss();
                     }
                 });
 

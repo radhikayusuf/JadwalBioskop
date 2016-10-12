@@ -69,7 +69,9 @@ public class ContentFragmentVM extends GitsVM {
 
                     @Override
                     public void onNext(KotaRequest.KotaViewResponse kotaViewResponse) {
+                        detailKotabackup.clear();
                         detailKotabackup.addAll(kotaViewResponse.datas);
+                        detailKotaDaos.clear();
                         detailKotaDaos.addAll(kotaViewResponse.datas);
                         //mDataKota.add(kotaViewResponse);
                         rcAppAdapter.notifyDataSetChanged();

@@ -3,6 +3,14 @@ package com.example.root.jadwalbioskop.Main.Fragment.RecyclerViewSetting;
 import android.databinding.ViewDataBinding;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
+import android.widget.Toast;
+
+import com.example.root.jadwalbioskop.API.dao.DetailKotaDao;
+import com.example.root.jadwalbioskop.API.dao.KotaDao;
+import com.example.root.jadwalbioskop.Main.KotaRequest;
+import com.example.root.jadwalbioskop.R;
+import com.example.root.jadwalbioskop.databinding.CardContentRowBinding;
 
 import java.util.List;
 
@@ -13,34 +21,32 @@ import id.gits.mvvmcore.viewmodel.GitsRowVM;
  * Created by root on 11/10/16.
  */
 
-public class ContentAdapter extends GitsAdapter {
+public class ContentAdapter extends GitsAdapter<DetailKotaDao, ContentVM, CardContentRowBinding> {
 
-    public ContentAdapter(List collection) {
+
+    public ContentAdapter(List<DetailKotaDao> collection) {
         super(collection);
     }
 
     @Override
-    public GitsRowVM createViewModel(AppCompatActivity activity, ViewDataBinding binding, Object item, int position) {
-        return null;
+    public ContentVM createViewModel(AppCompatActivity activity, CardContentRowBinding binding, DetailKotaDao item, int position) {
+        return new ContentVM(activity, binding, item, position);
     }
 
     @Override
     public int getLayoutRes() {
-        return 0;
+        return R.layout.card_content_row;
     }
 
     @Override
-    public void render(ViewDataBinding binding, GitsRowVM viewModel, Object item) {
-
+    public void render(CardContentRowBinding binding, ContentVM viewModel, DetailKotaDao item) {
+        binding.setVm(viewModel);
     }
 
     @Override
-    public void onRowClick(Object data, int position) {
-
+    public void onRowClick(DetailKotaDao data, int position) {
+        Toast.makeText(mContext, mCollection.get(position).getKota() +" "+ mCollection.get(position).getId(), Toast.LENGTH_SHORT).show();
+        Log.d("Hello1","");
     }
 
-    @Override
-    public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
-
-    }
 }

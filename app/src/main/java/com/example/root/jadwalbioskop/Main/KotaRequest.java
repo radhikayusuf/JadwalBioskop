@@ -1,5 +1,6 @@
 package com.example.root.jadwalbioskop.Main;
 
+import com.example.root.jadwalbioskop.API.dao.DetailKotaDao;
 import com.example.root.jadwalbioskop.API.dao.KotaDao;
 
 import java.util.List;
@@ -15,16 +16,11 @@ public interface KotaRequest {
 
     class KotaViewResponse {
         public String status;
-        public List<KotaDao.DATA> data;
+        public List<DetailKotaDao> datas;
 
-        public KotaViewResponse(String status, List<KotaDao.DATA> data) {
+        public KotaViewResponse(String status, List<DetailKotaDao> datas) {
             this.status = status;
-            this.data = data;
-
+            this.datas = datas;
+            }
         }
-
-
-
-
     }
-}

@@ -5,6 +5,9 @@ import com.example.root.jadwalbioskop.API.BaseRequest;
 import com.example.root.jadwalbioskop.API.Kota.KotaResponse;
 import com.example.root.jadwalbioskop.API.dao.KotaDao;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.inject.Singleton;
 
 import rx.Observable;
@@ -23,7 +26,7 @@ public class KotaRequestImpl extends BaseRequest implements KotaRequest {
         return apiClient.getApiInterface().kotaList().map(new Func1<KotaDao, KotaViewResponse>() {
             @Override
             public KotaViewResponse call(KotaDao kotaDao) {
-                return new KotaViewResponse(kotaDao.status,kotaDao.data);
+                return new KotaViewResponse(kotaDao.getStatus(), kotaDao.getData());
             }
         });
     }

@@ -41,4 +41,6 @@ dependencies {
     compile 'com.google.android.gms:play-services-maps:9.0.1'
     apt 'com.google.dagger:dagger-compiler:2.2'
     compile 'com.android.support:cardview-v7:24.2.1'
+    compile 'com.nineoldandroids:library:2.4.0'
+    compile 'com.daimajia.slider:library:1.1.5@aar'
 }

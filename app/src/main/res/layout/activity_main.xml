@@ -44,12 +44,13 @@
             android:layout_height="match_parent"
             app:layout_behavior="@string/appbar_scrolling_view_behavior"
             android:orientation="vertical">
-            <ImageView
+
+            <com.daimajia.slider.library.SliderLayout
+                android:id="@+id/slider"
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
-                app:setBackground="@{vm.bg}"
-                android:scaleType="centerCrop"/>
-
+                app:setBackground="@{vm.url_maps}"
+                />
 
             <android.support.v4.view.ViewPager
                 android:layout_width="match_parent"

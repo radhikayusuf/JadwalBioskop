@@ -6,6 +6,8 @@ import android.util.Log;
 
 import com.example.root.jadwalbioskop.API.Kota.KotaResponse;
 
+import com.example.root.jadwalbioskop.API.dao.DetailKotaDao;
+import com.example.root.jadwalbioskop.API.dao.KotaDao;
 import com.example.root.jadwalbioskop.Dagger.Injector;
 import com.example.root.jadwalbioskop.Main.Fragment.RecyclerViewSetting.ContentAdapter;
 import com.example.root.jadwalbioskop.Main.KotaRequest;
@@ -29,7 +31,8 @@ public class ContentFragmentVM extends GitsVM {
 
 
     public ContentAdapter rcAppAdapter;
-    KotaRequest.KotaViewResponse mDataKota;
+    List<KotaRequest.KotaViewResponse> mDataKota;
+    List<DetailKotaDao> detailKotaDaos = new ArrayList<>();
     public LinearLayoutManager bGridLayoutManager;
 
     @Inject
@@ -39,7 +42,7 @@ public class ContentFragmentVM extends GitsVM {
         super(context);
         Injector.component.Inject(this);
 
-        rcAppAdapter = new ContentAdapter(mDataKota.data);
+        rcAppAdapter = new ContentAdapter(detailKotaDaos);
         bGridLayoutManager = new LinearLayoutManager(mContext);
 
         kotaRequest.requestKota()
@@ -59,7 +62,8 @@ public class ContentFragmentVM extends GitsVM {
 
                     @Override
                     public void onNext(KotaRequest.KotaViewResponse kotaViewResponse) {
-                        mDataKota = kotaViewResponse;
+                        detailKotaDaos.addAll(kotaViewResponse.datas);
+                        //mDataKota.add(kotaViewResponse);
                         rcAppAdapter.notifyDataSetChanged();
                     }
                 });

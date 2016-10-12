@@ -8,10 +8,22 @@ import java.util.List;
 
 public class KotaDao {
     public String status;
-    public List<DATA> data;
+    public List<DetailKotaDao> data;
 
-    public class DATA {
-        public String id;
-        public String kota;
+    public String getStatus() {
+        return status;
     }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public List<DetailKotaDao> getData() {
+        return data;
+    }
+
+    public void setData(List<DetailKotaDao> data) {
+        this.data = data;
+    }
+
 }

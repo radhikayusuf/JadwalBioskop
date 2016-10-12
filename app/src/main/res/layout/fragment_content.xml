@@ -29,18 +29,17 @@
                 android:layout_height="wrap_content"
                 android:textColorHint="#fff">
                 <EditText
+                    android:id="@+id/binded"
                     android:textColor="#fff"
                     android:background="@android:color/transparent"
                     android:hint="Find Your City"
                     android:padding="10dp"
                     android:paddingTop="20dp"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                    app:binding="@{vm.observableString}"/>
             </android.support.design.widget.TextInputLayout>
         </LinearLayout>
-
-
-
         <android.support.v7.widget.RecyclerView
             android:elevation="10dp"
             android:layout_margin="10dp"

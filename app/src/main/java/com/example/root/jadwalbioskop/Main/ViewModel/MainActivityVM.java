@@ -2,10 +2,12 @@ package com.example.root.jadwalbioskop.Main.ViewModel;
 
 import android.content.Context;
 import android.databinding.BindingAdapter;
+import android.databinding.BindingConversion;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.view.ViewPager;
 import android.util.Log;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -20,6 +22,9 @@ import com.example.root.jadwalbioskop.Dagger.Injector;
 import com.example.root.jadwalbioskop.Main.Adapter.ViewPagerAdapter;
 import com.example.root.jadwalbioskop.Main.Fragment.ContentFragment;
 import com.example.root.jadwalbioskop.Main.Fragment.SettingFragment;
+import com.example.root.jadwalbioskop.Main.Search.ObservableString;
+import com.example.root.jadwalbioskop.Main.Search.TextWatcherAdapter;
+import com.example.root.jadwalbioskop.R;
 import com.squareup.picasso.Picasso;
 
 import java.util.HashMap;
@@ -36,7 +41,6 @@ import rx.schedulers.Schedulers;
  */
 
 public class MainActivityVM extends GitsVM{
-
 
     public View.OnClickListener click;
     private static Context ctx;
@@ -81,11 +85,5 @@ public class MainActivityVM extends GitsVM{
 
             sliderLayout.addSlider(textSliderView);
         }
-
-
-
     }
-
-
-
 }

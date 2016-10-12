@@ -1,8 +1,11 @@
 package com.example.root.jadwalbioskop.Main.Fragment.ViewModel;
 
 import android.content.Context;
+import android.databinding.BindingAdapter;
+import android.databinding.BindingConversion;
 import android.support.v7.widget.LinearLayoutManager;
 import android.util.Log;
+import android.widget.EditText;
 
 import com.example.root.jadwalbioskop.API.Kota.KotaResponse;
 
@@ -11,6 +14,9 @@ import com.example.root.jadwalbioskop.API.dao.KotaDao;
 import com.example.root.jadwalbioskop.Dagger.Injector;
 import com.example.root.jadwalbioskop.Main.Fragment.RecyclerViewSetting.ContentAdapter;
 import com.example.root.jadwalbioskop.Main.KotaRequest;
+import com.example.root.jadwalbioskop.Main.Search.ObservableString;
+import com.example.root.jadwalbioskop.Main.Search.TextWatcherAdapter;
+import com.example.root.jadwalbioskop.R;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,10 +35,10 @@ import rx.schedulers.Schedulers;
 public class ContentFragmentVM extends GitsVM {
 
 
-
-    public ContentAdapter rcAppAdapter;
+    public ObservableString observableString = new ObservableString();
+    public static ContentAdapter rcAppAdapter;
     List<KotaRequest.KotaViewResponse> mDataKota;
-    List<DetailKotaDao> detailKotaDaos = new ArrayList<>();
+    public static List<DetailKotaDao> detailKotaDaos = new ArrayList<>();
     public LinearLayoutManager bGridLayoutManager;
 
     @Inject
@@ -69,5 +75,52 @@ public class ContentFragmentVM extends GitsVM {
                 });
     }
 
+    @BindingAdapter({"binding"})
+    public static void bindEditText(EditText view, final ObservableString observableString)
+    {
+        if (view.getTag(R.id.binded) == null)
+        {
+            view.setTag(R.id.binded, true);
+            view.addTextChangedListener(new TextWatcherAdapter()
+            {
+                @Override
+                public void onTextChanged(CharSequence s, int start, int before, int count)
+                {
+                    observableString.set(s.toString());
+                    onSearch(s.toString(),detailKotaDaos);
+                    rcAppAdapter.notifyDataSetChanged();
+                }
+            });
+        }
+        String newValue = observableString.get();
+        if (!view.getText().toString().equals(newValue))
+        {
+            view.setText(newValue);
+        }
+    }
+
+    @BindingConversion
+    public static String convertObservableStringToString(ObservableString observableString)
+    {
+        return observableString.get();
+    }
+
+    public static List<DetailKotaDao> onSearch(String search , List<DetailKotaDao> detailTemporary){
+        List<DetailKotaDao> detailKotaSearch = new ArrayList<>();
+        if(search.equalsIgnoreCase("") || search == null){
+            return detailTemporary;
+        }else {
+            for (int i = 0;i < detailTemporary.size();i++){
+                for (int j = 0;j < detailTemporary.get(i).getKota().length();i++){
+                    String chardata = String.valueOf(detailTemporary.get(i).getKota().charAt(j));
+                    if(chardata.equalsIgnoreCase(search)){
+                        detailKotaSearch.add(detailTemporary.get(i));
+                        break;
+                    }
+                }
+            }
+            return detailKotaSearch;
+        }
+    }
 
 }

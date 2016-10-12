@@ -1,6 +1,9 @@
 package com.example.root.jadwalbioskop.DetailMovie.ViewModel;
 
 import android.content.Context;
+import android.util.Log;
+
+import com.example.root.jadwalbioskop.API.dao.DetailMovieDao;
 
 import id.gits.mvvmcore.viewmodel.GitsVM;
 
@@ -9,7 +12,9 @@ import id.gits.mvvmcore.viewmodel.GitsVM;
  */
 
 public class DetailMovieVM extends GitsVM {
-    public DetailMovieVM(Context context) {
+    public String title;
+    public DetailMovieVM(Context context, DetailMovieDao dao) {
         super(context);
+        title = dao.getMovie();
     }
 }

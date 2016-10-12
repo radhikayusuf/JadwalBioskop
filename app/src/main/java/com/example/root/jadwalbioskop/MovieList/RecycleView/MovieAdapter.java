@@ -1,9 +1,13 @@
 package com.example.root.jadwalbioskop.MovieList.RecycleView;
 
+import android.content.Intent;
+import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
 import com.example.root.jadwalbioskop.API.dao.DetailMovieDao;
+import com.example.root.jadwalbioskop.API.dao.JadwalDao;
 import com.example.root.jadwalbioskop.API.dao.MovieDao;
+import com.example.root.jadwalbioskop.DetailMovie.DetailMovie;
 import com.example.root.jadwalbioskop.R;
 import com.example.root.jadwalbioskop.databinding.MovieRowBinding;
 
@@ -39,6 +43,10 @@ public class MovieAdapter extends GitsAdapter<DetailMovieDao, MovieRowVM, MovieR
 
     @Override
     public void onRowClick(DetailMovieDao data, int position) {
+        DetailMovieDao dao = mCollection.get(position);
 
+        Intent i = new Intent(mContext, DetailMovie.class);
+        i.putExtra("dao", dao);
+        mContext.startActivity(i);
     }
 }

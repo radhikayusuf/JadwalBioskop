@@ -1,12 +1,13 @@
 package com.example.root.jadwalbioskop.API.dao;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
  * Created by Varokah on 10/12/2016.
  */
 
-public class DetailMovieDao {
+public class DetailMovieDao implements Serializable{
     public String movie,poster,genre,duration;
     public List<JadwalDao> jadwal;
 

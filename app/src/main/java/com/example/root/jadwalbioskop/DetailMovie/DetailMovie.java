@@ -1,5 +1,6 @@
 package com.example.root.jadwalbioskop.DetailMovie;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -7,6 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 
+import com.example.root.jadwalbioskop.API.dao.DetailMovieDao;
 import com.example.root.jadwalbioskop.DetailMovie.ViewModel.DetailMovieVM;
 import com.example.root.jadwalbioskop.R;
 import com.example.root.jadwalbioskop.databinding.ActivityDetailMovieBinding;
@@ -17,7 +19,7 @@ public class DetailMovie extends GitsActivity<DetailMovieVM,ActivityDetailMovieB
 
     @Override
     protected int getToolbarId() {
-        return R.id.toolbar_layout;
+        return 0;
     }
 
     @Override
@@ -27,7 +29,9 @@ public class DetailMovie extends GitsActivity<DetailMovieVM,ActivityDetailMovieB
 
     @Override
     public DetailMovieVM getViewModel() {
-        return new DetailMovieVM(this);
+        Intent i = getIntent();
+        DetailMovieDao dao = (DetailMovieDao) i.getSerializableExtra("dao");
+        return new DetailMovieVM(this, dao);
     }
 
     @Override

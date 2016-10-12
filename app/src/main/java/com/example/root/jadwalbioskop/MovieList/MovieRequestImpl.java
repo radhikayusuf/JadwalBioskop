@@ -29,5 +29,7 @@ public class MovieRequestImpl extends BaseRequest implements MovieRequest{
                         movieDao.getData());
             }
         });
+
+
     }
 }

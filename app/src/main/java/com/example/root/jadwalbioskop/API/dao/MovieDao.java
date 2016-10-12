@@ -1,12 +1,13 @@
 package com.example.root.jadwalbioskop.API.dao;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
  * Created by Varokah on 10/11/2016.
  */
 
-public class MovieDao {
+public class MovieDao implements Serializable{
     public String status,kota,date;
     public List<DetailMovieDao> data;
 

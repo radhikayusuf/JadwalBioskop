@@ -1,6 +1,7 @@
 package com.example.root.jadwalbioskop.Main;
 
 import com.example.root.jadwalbioskop.API.Movie.MovieResponse;
+import com.example.root.jadwalbioskop.API.dao.DetailMovieDao;
 import com.example.root.jadwalbioskop.API.dao.MovieDao;
 
 import java.util.List;
@@ -16,19 +17,9 @@ public interface MovieRequest {
 
     class MovieViewResponse{
         public String status,kota,date;
-        public List<data> datas;
+        public List<DetailMovieDao> datas;
 
-        private class data {
-            public String movie,poster,genre,duration;
-            public List<jadwal> jadwals;
-
-            private class jadwal{
-                public String bioskop,harga;
-                public List<String> jams;
-            }
-        }
-
-        public MovieViewResponse(String status, String kota, String date, List<data> datas) {
+        public MovieViewResponse(String status, String kota, String date, List<DetailMovieDao> datas) {
             this.status = status;
             this.kota = kota;
             this.date = date;

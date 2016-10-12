@@ -20,7 +20,7 @@ public class MovieRequestImpl extends BaseRequest implements MovieRequest{
         return apiClient.getApiInterface().movieList(id).map(new Func1<MovieDao, MovieViewResponse>() {
             @Override
             public MovieViewResponse call(MovieDao movieResponse) {
-                return new MovieViewResponse(movieResponse.status,movieResponse.kota,movieResponse.date,movieResponse.datas);
+                return new MovieViewResponse(movieResponse.getStatus(),movieResponse.getKota(),movieResponse.getDate(),movieResponse.getDatas());
             }
         });
     }

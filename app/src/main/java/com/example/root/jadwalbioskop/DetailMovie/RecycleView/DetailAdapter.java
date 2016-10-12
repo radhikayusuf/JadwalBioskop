@@ -10,7 +10,7 @@ import java.util.List;
 import id.gits.mvvmcore.adapter.GitsAdapter;
 
 /**
- * Created by Varokah on 10/12/2016.
+ * Created by Aqiel on 10/12/2016.
  */
 
 public class DetailAdapter extends GitsAdapter<JadwalDao,DetailRowVM,CardDetailRowBinding> {

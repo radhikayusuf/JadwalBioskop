@@ -36,14 +36,16 @@
                     <ImageView
                         android:layout_width="?attr/actionBarSize"
                         android:layout_height="match_parent"
-                        android:src="@drawable/ic_arrow_back_white_24dp"/>
+                        android:src="@drawable/ic_arrow_back_white_24dp"
+                        android:onClick="@{vm.click}"/>
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         tools:text="Title City"
                         android:textSize="20sp"
                         android:textAlignment="center"
-                        android:textColor="#fff"/>
+                        android:textColor="#fff"
+                        android:text="@{vm.title}"/>
                 </LinearLayout>
             </android.support.v7.widget.Toolbar>
 

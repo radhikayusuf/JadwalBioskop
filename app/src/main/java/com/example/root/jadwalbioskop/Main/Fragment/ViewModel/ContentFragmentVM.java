@@ -39,6 +39,7 @@ public class ContentFragmentVM extends GitsVM {
     public static ContentAdapter rcAppAdapter;
     List<KotaRequest.KotaViewResponse> mDataKota;
     public static List<DetailKotaDao> detailKotaDaos = new ArrayList<>();
+    public static List<DetailKotaDao> detailKotabackup = new ArrayList<>();
     public LinearLayoutManager bGridLayoutManager;
 
     @Inject
@@ -68,6 +69,7 @@ public class ContentFragmentVM extends GitsVM {
 
                     @Override
                     public void onNext(KotaRequest.KotaViewResponse kotaViewResponse) {
+                        detailKotabackup.addAll(kotaViewResponse.datas);
                         detailKotaDaos.addAll(kotaViewResponse.datas);
                         //mDataKota.add(kotaViewResponse);
                         rcAppAdapter.notifyDataSetChanged();
@@ -87,7 +89,7 @@ public class ContentFragmentVM extends GitsVM {
                 public void onTextChanged(CharSequence s, int start, int before, int count)
                 {
                     observableString.set(s.toString());
-                    onSearch(s.toString(),detailKotaDaos);
+                    detailKotaDaos = onSearch(s.toString(),detailKotaDaos);
                     rcAppAdapter.notifyDataSetChanged();
                 }
             });

@@ -8,14 +8,14 @@ import java.util.List;
 
 public class DetailMovieDao {
     public String movie,poster,genre,duration;
-    public List<JadwalDao> jadwals;
+    public List<JadwalDao> jadwal;
 
-    public DetailMovieDao(String movie, String poster, String genre, String duration, List<JadwalDao> jadwals) {
+    public DetailMovieDao(String movie, String poster, String genre, String duration, List<JadwalDao> jadwal) {
         this.movie = movie;
         this.poster = poster;
         this.genre = genre;
         this.duration = duration;
-        this.jadwals = jadwals;
+        this.jadwal = jadwal;
     }
 
     public String getMovie() {
@@ -50,11 +50,11 @@ public class DetailMovieDao {
         this.duration = duration;
     }
 
-    public List<JadwalDao> getJadwals() {
-        return jadwals;
+    public List<JadwalDao> getJadwal() {
+        return jadwal;
     }
 
-    public void setJadwals(List<JadwalDao> jadwals) {
-        this.jadwals = jadwals;
+    public void setJadwal(List<JadwalDao> jadwal) {
+        this.jadwal = jadwal;
     }
 }

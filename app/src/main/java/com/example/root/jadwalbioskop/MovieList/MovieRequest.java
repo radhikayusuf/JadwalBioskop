@@ -1,4 +1,4 @@
-package com.example.root.jadwalbioskop.Main;
+package com.example.root.jadwalbioskop.MovieList;
 
 import com.example.root.jadwalbioskop.API.Movie.MovieResponse;
 import com.example.root.jadwalbioskop.API.dao.DetailMovieDao;

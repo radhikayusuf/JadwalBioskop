@@ -8,12 +8,12 @@ import java.util.List;
 
 public class JadwalDao {
     public String bioskop,harga;
-    public List<String> jams;
+    public List<String> jam;
 
-    public JadwalDao(String bioskop, String harga, List<String> jams) {
+    public JadwalDao(String bioskop, String harga, List<String> jam) {
         this.bioskop = bioskop;
         this.harga = harga;
-        this.jams = jams;
+        this.jam = jam;
     }
 
     public String getBioskop() {
@@ -32,11 +32,11 @@ public class JadwalDao {
         this.harga = harga;
     }
 
-    public List<String> getJams() {
-        return jams;
+    public List<String> getJam() {
+        return jam;
     }
 
-    public void setJams(List<String> jams) {
-        this.jams = jams;
+    public void setJam(List<String> jam) {
+        this.jam = jam;
     }
 }

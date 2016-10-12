@@ -1,5 +1,6 @@
 package com.example.root.jadwalbioskop.Main.Fragment.RecyclerViewSetting;
 
+import android.content.Intent;
 import android.databinding.ViewDataBinding;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
@@ -9,6 +10,7 @@ import android.widget.Toast;
 import com.example.root.jadwalbioskop.API.dao.DetailKotaDao;
 import com.example.root.jadwalbioskop.API.dao.KotaDao;
 import com.example.root.jadwalbioskop.Main.KotaRequest;
+import com.example.root.jadwalbioskop.MovieList.MovieList;
 import com.example.root.jadwalbioskop.R;
 import com.example.root.jadwalbioskop.databinding.CardContentRowBinding;
 
@@ -45,8 +47,11 @@ public class ContentAdapter extends GitsAdapter<DetailKotaDao, ContentVM, CardCo
 
     @Override
     public void onRowClick(DetailKotaDao data, int position) {
-        Toast.makeText(mContext, mCollection.get(position).getKota() +" "+ mCollection.get(position).getId(), Toast.LENGTH_SHORT).show();
-        Log.d("Hello1","");
+        //Toast.makeText(mContext, mCollection.get(position).getKota() +" "+ mCollection.get(position).getId(), Toast.LENGTH_SHORT).show();
+        //Log.d("Hello1","");
+        Intent i = new Intent(mContext, MovieList.class);
+        i.putExtra("id", data.getId());
+        mContext.startActivity(i);
     }
 
 }

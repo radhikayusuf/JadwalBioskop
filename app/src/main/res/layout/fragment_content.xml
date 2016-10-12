@@ -30,7 +30,7 @@
                 android:textColorHint="#fff">
                 <EditText
                     android:id="@+id/binded"
-                    android:textColor="#fff"
+                    android:textColor="#000"
                     android:background="@android:color/transparent"
                     android:hint="Find Your City"
                     android:padding="10dp"

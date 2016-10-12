@@ -1,5 +1,9 @@
 package com.example.root.jadwalbioskop.API.Movie;
 
+import android.graphics.Movie;
+
+import com.example.root.jadwalbioskop.API.dao.MovieDao;
+
 import java.util.List;
 
 /**
@@ -11,8 +15,7 @@ public class MovieResponse {
     private String status;
     private String kota;
     private String date;
-
-    private List<DataBean> data;
+    private List<MovieDao> data;
 
     public String getStatus() {
         return status;
@@ -38,89 +41,89 @@ public class MovieResponse {
         this.date = date;
     }
 
-    public List<DataBean> getData() {
+    public List<MovieDao> getData() {
         return data;
     }
 
-    public void setData(List<DataBean> data) {
+    public void setData(List<MovieDao> data) {
         this.data = data;
     }
 
-    public static class DataBean {
-        private String movie;
-        private String poster;
-        private String genre;
-        private String duration;
-        private List<JadwalBean> jadwal;
-
-        public String getMovie() {
-            return movie;
-        }
-
-        public void setMovie(String movie) {
-            this.movie = movie;
-        }
-
-        public String getPoster() {
-            return poster;
-        }
-
-        public void setPoster(String poster) {
-            this.poster = poster;
-        }
-
-        public String getGenre() {
-            return genre;
-        }
-
-        public void setGenre(String genre) {
-            this.genre = genre;
-        }
-
-        public String getDuration() {
-            return duration;
-        }
-
-        public void setDuration(String duration) {
-            this.duration = duration;
-        }
-
-        public List<JadwalBean> getJadwal() {
-            return jadwal;
-        }
-
-        public void setJadwal(List<JadwalBean> jadwal) {
-            this.jadwal = jadwal;
-        }
-
-        public static class JadwalBean {
-            private String bioskop;
-            private String harga;
-            private List<String> jam;
-
-            public String getBioskop() {
-                return bioskop;
-            }
-
-            public void setBioskop(String bioskop) {
-                this.bioskop = bioskop;
-            }
-
-            public String getHarga() {
-                return harga;
-            }
-
-            public void setHarga(String harga) {
-                this.harga = harga;
-            }
-
-            public List<String> getJam() {
-                return jam;
-            }
-
-            public void setJam(List<String> jam) {
-                this.jam = jam;
-            }
-        }
-    }
+//    public static class DataBean {
+//        private String movie;
+//        private String poster;
+//        private String genre;
+//        private String duration;
+//        private List<JadwalBean> jadwal;
+//
+//        public String getMovie() {
+//            return movie;
+//        }
+//
+//        public void setMovie(String movie) {
+//            this.movie = movie;
+//        }
+//
+//        public String getPoster() {
+//            return poster;
+//        }
+//
+//        public void setPoster(String poster) {
+//            this.poster = poster;
+//        }
+//
+//        public String getGenre() {
+//            return genre;
+//        }
+//
+//        public void setGenre(String genre) {
+//            this.genre = genre;
+//        }
+//
+//        public String getDuration() {
+//            return duration;
+//        }
+//
+//        public void setDuration(String duration) {
+//            this.duration = duration;
+//        }
+//
+//        public List<JadwalBean> getJadwal() {
+//            return jadwal;
+//        }
+//
+//        public void setJadwal(List<JadwalBean> jadwal) {
+//            this.jadwal = jadwal;
+//        }
+//
+//        public static class JadwalBean {
+//            private String bioskop;
+//            private String harga;
+//            private List<String> jam;
+//
+//            public String getBioskop() {
+//                return bioskop;
+//            }
+//
+//            public void setBioskop(String bioskop) {
+//                this.bioskop = bioskop;
+//            }
+//
+//            public String getHarga() {
+//                return harga;
+//            }
+//
+//            public void setHarga(String harga) {
+//                this.harga = harga;
+//            }
+//
+//            public List<String> getJam() {
+//                return jam;
+//            }
+//
+//            public void setJam(List<String> jam) {
+//                this.jam = jam;
+//            }
+//        }
+//    }
 }

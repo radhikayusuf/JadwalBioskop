@@ -89,7 +89,7 @@ public class ContentFragmentVM extends GitsVM {
                 public void onTextChanged(CharSequence s, int start, int before, int count)
                 {
                     observableString.set(s.toString());
-                    detailKotaDaos = onSearch(s.toString(),detailKotaDaos);
+                    detailKotaDaos = onSearch(observableString.toString(),detailKotaDaos);
                     rcAppAdapter.notifyDataSetChanged();
                 }
             });
@@ -109,11 +109,9 @@ public class ContentFragmentVM extends GitsVM {
 
     public static List<DetailKotaDao> onSearch(String search , List<DetailKotaDao> detailTemporary){
         List<DetailKotaDao> detailKotaSearch = new ArrayList<>();
-        if(search.equalsIgnoreCase("") || search == null){
-            return detailTemporary;
-        }else {
+        if(!search.equalsIgnoreCase("") || search != null){
             for (int i = 0;i < detailTemporary.size();i++){
-                for (int j = 0;j < detailTemporary.get(i).getKota().length();i++){
+                for (int j = 0;j < detailTemporary.get(i).getKota().length()- 1;j++){
                     String chardata = String.valueOf(detailTemporary.get(i).getKota().charAt(j));
                     if(chardata.equalsIgnoreCase(search)){
                         detailKotaSearch.add(detailTemporary.get(i));
@@ -122,6 +120,9 @@ public class ContentFragmentVM extends GitsVM {
                 }
             }
             return detailKotaSearch;
+        }else {
+            return detailTemporary;
+
         }
     }
 

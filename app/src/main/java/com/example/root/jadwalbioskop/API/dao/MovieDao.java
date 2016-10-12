@@ -8,20 +8,20 @@ import java.util.List;
 
 public class MovieDao {
     public String status,kota,date;
-    public List<DetailMovieDao> datas;
+    public List<DetailMovieDao> data;
 
-    public MovieDao(String status, String kota, String date, List<DetailMovieDao> datas) {
+    public MovieDao(String status, String kota, String date, List<DetailMovieDao> data) {
         this.status = status;
         this.kota = kota;
         this.date = date;
-        this.datas = datas;
+        this.data = data;
     }
 
     public String getStatus() {
         return status;
     }
 
-    public void setStatus(String status) {
+    public void setStatu(String status) {
         this.status = status;
     }
 
@@ -41,11 +41,11 @@ public class MovieDao {
         this.date = date;
     }
 
-    public List<DetailMovieDao> getDatas() {
-        return datas;
+    public List<DetailMovieDao> getData() {
+        return data;
     }
 
-    public void setDatas(List<DetailMovieDao> datas) {
-        this.datas = datas;
+    public void setData(List<DetailMovieDao> data) {
+        this.data = data;
     }
 }

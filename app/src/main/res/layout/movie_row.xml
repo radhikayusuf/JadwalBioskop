@@ -3,16 +3,20 @@
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <data>
-
+        <variable
+            name="vm"
+            type="com.example.root.jadwalbioskop.MovieList.RecycleView.MovieRowVM"/>
     </data>
     <RelativeLayout
-        android:layout_height="match_parent"
-        android:layout_width="match_parent">
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
         <ImageView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="260dp"
+            app:setBackground="@{vm.url}"
             tools:src="@drawable/common_full_open_on_phone"/>
         <TextView
+            android:text="@{vm.title}"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             tools:text="Title"
@@ -20,6 +24,7 @@
             android:textColor="@android:color/white"
             android:layout_alignParentBottom="true"
             android:padding="10dp"
-            android:textSize="24sp"/>
+            android:maxLines="1"
+            android:textSize="14sp"/>
     </RelativeLayout>
 </layout>

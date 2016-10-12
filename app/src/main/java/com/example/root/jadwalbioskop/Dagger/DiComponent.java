@@ -3,6 +3,7 @@ package com.example.root.jadwalbioskop.Dagger;
 import com.example.root.jadwalbioskop.API.ApiClient;
 import com.example.root.jadwalbioskop.Main.Fragment.ViewModel.ContentFragmentVM;
 import com.example.root.jadwalbioskop.Main.ViewModel.MainActivityVM;
+import com.example.root.jadwalbioskop.MovieList.ViewModel.MovieListVM;
 
 import javax.inject.Singleton;
 
@@ -24,5 +25,7 @@ public interface DiComponent {
         //void Inject(MainActivityVM mainActivityVM);
 
         void Inject(ContentFragmentVM contentViewModel);
+
+        void InjectMovie(MovieListVM movieListVM);
 
 }

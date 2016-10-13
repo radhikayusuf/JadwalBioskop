@@ -2,6 +2,7 @@ package com.example.root.jadwalbioskop.DetailMovie.ViewModel;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.databinding.BindingAdapter;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
@@ -18,6 +19,7 @@ import android.widget.ImageView;
 import com.example.root.jadwalbioskop.API.dao.DetailMovieDao;
 import com.example.root.jadwalbioskop.API.dao.JadwalDao;
 import com.example.root.jadwalbioskop.DetailMovie.RecycleView.DetailAdapter;
+import com.example.root.jadwalbioskop.Maps.MapsActivity;
 import com.squareup.picasso.Picasso;
 import com.squareup.picasso.Target;
 
@@ -63,7 +65,7 @@ public class DetailMovieVM extends GitsVM {
         openmaps = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                mContext.startActivity(new Intent(mContext, MapsActivity.class));
             }
         };
     }

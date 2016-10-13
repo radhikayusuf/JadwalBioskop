@@ -7,9 +7,12 @@
             type="com.example.root.jadwalbioskop.DetailMovie.RecycleView.DetailRowVM" />
     </data>
     <android.support.v7.widget.CardView
+        android:layout_margin="5dp"
+        android:elevation="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <LinearLayout
+            android:layout_marginLeft="5dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
@@ -19,22 +22,31 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
                 <TextView
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:padding="5dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@{vm.Bioskop}"/>
                 <TextView
+                    android:padding="5dp"
+                    android:layout_marginLeft="10dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@{vm.harga}"/>
                 <TextView
+                    android:padding="5dp"
+                    android:layout_marginLeft="10dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@{vm.time}"/>
             </LinearLayout>
             <ImageButton
+                android:background="@android:color/transparent"
                 android:layout_width="0dp"
                 android:layout_weight="1"
-                android:layout_height="match_parent"/>
+                android:layout_height="match_parent"
+                android:src="@drawable/ic_keyboard_arrow_right_black_24dp"/>
         </LinearLayout>
     </android.support.v7.widget.CardView>
 </layout>

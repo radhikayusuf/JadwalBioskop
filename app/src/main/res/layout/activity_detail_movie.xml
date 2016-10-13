@@ -64,29 +64,42 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical">
-                <TextView
-                    android:text="@{vm.title}"
-                    android:textSize="24sp"
-                    android:padding="10dp"
+                <LinearLayout
+                    android:layout_marginTop="20dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                <TextView
+                    android:text="@{vm.title}"
+                    android:layout_weight="1"
+                    android:textSize="24sp"
+                    android:padding="10dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     tools:text="Title"/>
+                <TextView
+                    android:padding="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    tools:text="duration"
+                    android:text="@{vm.duration}"/>
+                </LinearLayout>
                 <TextView
                     android:padding="10dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@{vm.genre}"
                     tools:text="genre"/>
-                <TextView
-                    android:padding="10dp"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    tools:text="duration"
-                    android:text="@{vm.duration}"/>
+
                 <Button
+                    android:layout_marginTop="20dp"
+                    android:textColor="#fff"
+                    android:background="#f5aa14"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="List Bioskop"/>
+
                 <android.support.v7.widget.RecyclerView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"

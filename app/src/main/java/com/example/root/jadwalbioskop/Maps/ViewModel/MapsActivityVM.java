@@ -52,7 +52,7 @@ public class MapsActivityVM extends GitsVM{
             public void onMapReady(GoogleMap googleMap) {
                 mgoogleMap = googleMap;
                 try {
-                    geoLocate(context,"Bandung");
+                    geoLocate(context,"BIP", "Bandung");
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
@@ -61,34 +61,36 @@ public class MapsActivityVM extends GitsVM{
 
     }
 
-    private void LocationMarkWithZoom(double lat, double lng, float zoom) {
+    private void LocationMarkWithZoom(double lat, double lng, float zoom, String bioskop, String kota) {
         LatLng latLng = new LatLng(lat, lng);
         CameraUpdate cam = CameraUpdateFactory.newLatLngZoom(latLng, zoom);
         mgoogleMap.moveCamera(cam);
-        setMarker(lat, lng);
+        setMarker(lat, lng, bioskop, kota);
 
     }
-    private void setMarker(double lat, double lng) {
+    private void setMarker(double lat, double lng, String bioskop, String Kota) {
         if(marker != null){
             marker.remove();
         }
 
         MarkerOptions markerOptions = new MarkerOptions()
-                .title("Bioskop")
+                .title(bioskop)
+                .snippet(Kota)
                 .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE))//
                 .position(new LatLng(lat,lng));
         marker = mgoogleMap.addMarker(markerOptions);
 
     }
-    public void geoLocate(Context context,String location) throws IOException {
+    public void geoLocate(Context context,String location, String kota) throws IOException {
         String Location = location;
         Geocoder gc = new Geocoder(context);
 
-        List<Address> list = gc.getFromLocationName(Location,1);
+
+        List<Address> list = gc.getFromLocationName(Location+" "+kota, 1);
         Address address = list.get(0);
         double lat = address.getLatitude();
         double lng = address.getLongitude();
-        LocationMarkWithZoom(lat,lng,15);
+        LocationMarkWithZoom(lat,lng,18, location, kota);
 
     }
 }

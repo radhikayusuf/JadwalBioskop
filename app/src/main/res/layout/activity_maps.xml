@@ -1,19 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    tools:context="pucukdevelopmentteam.momsayawake.MapActivity">
+    xmlns:tools="http://schemas.android.com/tools">
     <data>
         <variable
             name="vm"
-            type="com.example.root.jadwalbioskop.Maps.ViewModel.MapsVM" />
+            type="com.example.root.jadwalbioskop.Maps.ViewModel.MapsActivityVM"/>
     </data>
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-        <fragment
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:name="com.google.android.gms.maps.MapFragment"
-            android:id="@+id/fragment_map"/>
-    </RelativeLayout>
+
+<RelativeLayout
+    android:id="@+id/activity_maps"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.example.root.jadwalbioskop.Maps.MapsActivity">
+
+</RelativeLayout>
 </layout>

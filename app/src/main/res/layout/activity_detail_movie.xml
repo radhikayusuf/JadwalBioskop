@@ -61,21 +61,28 @@
                     android:padding="10dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:text="@{vm.genre}"
                     tools:text="genre"/>
                 <TextView
                     android:padding="10dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    tools:text="duration"/>
+                    tools:text="duration"
+                    android:text="@{vm.duration}"/>
                 <Button
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="List Bioskop"/>
                 <android.support.v7.widget.RecyclerView
                     android:layout_width="match_parent"
-                    android:layout_height="fill_parent">
-    
+                    android:layout_height="100dp">
                 </android.support.v7.widget.RecyclerView>
+                <Button
+                    android:layout_marginTop="50dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Maps"
+                    android:onClick="@{vm.openmaps}"/>
             </LinearLayout>
         </android.support.v4.widget.NestedScrollView>
     </android.support.design.widget.CoordinatorLayout>

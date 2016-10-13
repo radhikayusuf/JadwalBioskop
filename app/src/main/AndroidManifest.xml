@@ -15,6 +15,10 @@
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES" />
 
+    <uses-feature
+        android:glEsVersion="0x00020000"
+        android:required="true" />
+
     <application
         android:name=".JadwalBioskop"
         android:allowBackup="true"
@@ -36,11 +40,13 @@
             android:name=".DetailMovie.DetailMovie"
             android:label="@string/title_activity_detail_movie"
             android:theme="@style/AppTheme" />
-        <activity android:name=".Maps.MapActivity"></activity>
 
         <meta-data
-            android:name="com.google.android.maps.v2.API_KEY"
-            android:value="AIzaSyDCiMnw3K4VuBcWx8CHWelbmmUeIw2n7uc" />
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyDpMNUByDK2Sf1YRrJQbTaESQjpc8MqdsM"/>
+        <!--<meta-data-->
+            <!--android:name="com.google.android.maps.v2.API_KEY"-->
+            <!--android:value="AIzaSyDCiMnw3K4VuBcWx8CHWelbmmUeIw2n7uc" />-->
 
         <activity android:name=".Maps.MapsActivity"></activity>
     </application>

@@ -1,5 +1,6 @@
 package com.example.root.jadwalbioskop.Maps;
 
+import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
@@ -24,7 +25,7 @@ public class MapsActivity extends GitsActivity<MapsActivityVM, ActivityMapsBindi
 
     @Override
     public MapsActivityVM getViewModel() {
-        return new MapsActivityVM(this);
+        return new MapsActivityVM(this, getSupportFragmentManager());
     }
 
     @Override

@@ -99,7 +99,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="List Bioskop"
-                    android:onClick="@{()->vm.onClickCollapsing()}"/>
+                    android:onClick="@{()->vm.onClickCollapsing()}"
+                    android:drawableRight="@{vm.isgone?@drawable/ic_keyboard_arrow_down_white_24dp : @drawable/ic_keyboard_arrow_up_white_24dp}"/>
 
                 <android.support.v7.widget.RecyclerView
                     android:layout_width="match_parent"

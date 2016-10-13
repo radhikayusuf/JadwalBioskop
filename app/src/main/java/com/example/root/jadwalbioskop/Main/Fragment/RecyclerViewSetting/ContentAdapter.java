@@ -1,6 +1,7 @@
 package com.example.root.jadwalbioskop.Main.Fragment.RecyclerViewSetting;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.databinding.ViewDataBinding;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
@@ -24,7 +25,8 @@ import id.gits.mvvmcore.viewmodel.GitsRowVM;
  */
 
 public class ContentAdapter extends GitsAdapter<DetailKotaDao, ContentVM, CardContentRowBinding> {
-
+    SharedPreferences sharedPreferences;
+    SharedPreferences.Editor editor;
 
     public ContentAdapter(List<DetailKotaDao> collection) {
         super(collection);
@@ -49,6 +51,11 @@ public class ContentAdapter extends GitsAdapter<DetailKotaDao, ContentVM, CardCo
     public void onRowClick(DetailKotaDao data, int position) {
         //Toast.makeText(mContext, mCollection.get(position).getKota() +" "+ mCollection.get(position).getId(), Toast.LENGTH_SHORT).show();
         //Log.d("Hello1","");
+        sharedPreferences = mContext.getSharedPreferences("data", 0);
+        editor = sharedPreferences.edit();
+        editor.putString("kota", mCollection.get(position).getKota());
+        editor.commit();
+
         Intent i = new Intent(mContext, MovieList.class);
         i.putExtra("id", data.getId());
         i.putExtra("title", data.getKota());

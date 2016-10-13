@@ -1,8 +1,13 @@
 package com.example.root.jadwalbioskop.DetailMovie.RecycleView;
 
+import android.app.ProgressDialog;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 
 import com.example.root.jadwalbioskop.API.dao.JadwalDao;
+import com.example.root.jadwalbioskop.Maps.MapsActivity;
 import com.example.root.jadwalbioskop.R;
 import com.example.root.jadwalbioskop.databinding.CardDetailRowBinding;
 
@@ -15,6 +20,8 @@ import id.gits.mvvmcore.adapter.GitsAdapter;
  */
 
 public class DetailAdapter extends GitsAdapter<JadwalDao,DetailRowVM,CardDetailRowBinding> {
+    SharedPreferences sharedPreferences;
+
     public DetailAdapter(List<JadwalDao> collection) {
         super(collection);
     }
@@ -36,6 +43,13 @@ public class DetailAdapter extends GitsAdapter<JadwalDao,DetailRowVM,CardDetailR
 
     @Override
     public void onRowClick(JadwalDao data, int position) {
+        sharedPreferences = mContext.getSharedPreferences("data",0);
+        Intent i = new Intent(mContext, MapsActivity.class);
+        i.putExtra("bioskop", mCollection.get(position).getBioskop());
+        i.putExtra("kota", sharedPreferences.getString("kota", "Indonesia"));
+        mContext.startActivity(i);
+        //Log.d("Hasil prefences", sharedPreferences.getString("kota", "Indonesia"));
+
 
     }
 }

@@ -1,10 +1,13 @@
 package com.example.root.jadwalbioskop.Maps.ViewModel;
 
 import android.app.Activity;
+import android.app.Dialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.location.Address;
 import android.location.Geocoder;
 import android.support.v4.app.FragmentManager;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 
@@ -34,12 +37,15 @@ public class MapsActivityVM extends GitsVM{
     public String title = "Maps";
     public static GoogleMap mgoogleMap;
     public Marker marker;
+    public static String kota, bioskop;
 
-    public MapsActivityVM(final Context context, FragmentManager fragmentManager) {
+    public MapsActivityVM(final Context context, FragmentManager fragmentManager, String city, String bioskop1) {
         super(context);
         SupportMapFragment supportMapFragment = (SupportMapFragment) fragmentManager
                 .findFragmentById(R.id.mapsDiActivity_Fragment);
 
+        this.kota = city;
+        this.bioskop = bioskop1;
 
         click = new View.OnClickListener() {
             @Override
@@ -52,7 +58,7 @@ public class MapsActivityVM extends GitsVM{
             public void onMapReady(GoogleMap googleMap) {
                 mgoogleMap = googleMap;
                 try {
-                    geoLocate(context,"BIP", "Bandung");
+                    geoLocate(context, bioskop, kota);
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
@@ -87,10 +93,26 @@ public class MapsActivityVM extends GitsVM{
 
 
         List<Address> list = gc.getFromLocationName(Location+" "+kota, 1);
-        Address address = list.get(0);
-        double lat = address.getLatitude();
-        double lng = address.getLongitude();
-        LocationMarkWithZoom(lat,lng,18, location, kota);
+
+        Log.d("List.Size", String.valueOf(list.size()));
+
+        if(list.size() != 0){
+            Address address = list.get(0);
+            double lat = address.getLatitude();
+            double lng = address.getLongitude();
+            LocationMarkWithZoom(lat,lng,18, location, kota);
+        }else{
+            Dialog dialog = new Dialog(mContext);
+            dialog.setContentView(R.layout.dialog_not_found);
+            dialog.show();
+            dialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
+                @Override
+                public void onDismiss(DialogInterface dialog) {
+                    ((Activity)mContext).finish();
+                }
+            });
+        }
+
 
     }
 }

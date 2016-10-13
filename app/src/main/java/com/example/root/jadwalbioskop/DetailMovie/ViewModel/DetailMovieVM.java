@@ -79,7 +79,6 @@ public class DetailMovieVM extends GitsVM {
     public static void setBackground(ImageView iv, String url){
         Picasso.with(ctx)
                 .load(url)
-                .fit()
                 .into(iv);
     }
 

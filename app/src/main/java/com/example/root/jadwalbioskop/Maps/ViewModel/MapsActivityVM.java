@@ -74,6 +74,12 @@ public class MapsActivityVM extends GitsVM{
         setMarker(lat, lng, bioskop, kota);
 
     }
+    private void LocationWithZoom(double lat, double lng, float zoom) {
+        LatLng latLng = new LatLng(lat, lng);
+        CameraUpdate cam = CameraUpdateFactory.newLatLngZoom(latLng, zoom);
+        mgoogleMap.moveCamera(cam);
+
+    }
     private void setMarker(double lat, double lng, String bioskop, String Kota) {
         if(marker != null){
             marker.remove();
@@ -87,13 +93,16 @@ public class MapsActivityVM extends GitsVM{
         marker = mgoogleMap.addMarker(markerOptions);
 
     }
-    public void geoLocate(Context context,String location, String kota) throws IOException {
-        String Location = location;
-        Geocoder gc = new Geocoder(context);
+    public void geoLocate(Context context, final String location, final String kota) throws IOException {
+        final String Location = location;
+        final Geocoder gc = new Geocoder(context);
+        List<Address> list;
 
-
-        List<Address> list = gc.getFromLocationName(Location+" "+kota, 1);
-
+        if(location.contains(kota)){
+            list = gc.getFromLocationName(Location, 1);
+        }else {
+            list = gc.getFromLocationName(Location+" "+kota, 1);
+        }
         Log.d("List.Size", String.valueOf(list.size()));
 
         if(list.size() != 0){
@@ -108,7 +117,17 @@ public class MapsActivityVM extends GitsVM{
             dialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
                 @Override
                 public void onDismiss(DialogInterface dialog) {
-                    ((Activity)mContext).finish();
+                    List<Address> list = null;
+                    try {
+                        list = gc.getFromLocationName(kota, 1);
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+
+                    Address address = list.get(0);
+                    double lat = address.getLatitude();
+                    double lng = address.getLongitude();
+                    LocationWithZoom(lat,lng,15);
                 }
             });
         }

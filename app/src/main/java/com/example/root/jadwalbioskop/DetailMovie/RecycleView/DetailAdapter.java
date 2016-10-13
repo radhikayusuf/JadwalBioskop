@@ -43,11 +43,15 @@ public class DetailAdapter extends GitsAdapter<JadwalDao,DetailRowVM,CardDetailR
 
     @Override
     public void onRowClick(JadwalDao data, int position) {
+        String movie = mCollection.get(position).getBioskop();
         sharedPreferences = mContext.getSharedPreferences("data",0);
         Intent i = new Intent(mContext, MapsActivity.class);
-        i.putExtra("bioskop", mCollection.get(position).getBioskop());
+        i.putExtra("bioskop", movie.contains("XXI") ? movie.replace("XII", " ") : movie);
         i.putExtra("kota", sharedPreferences.getString("kota", "Indonesia"));
+
         mContext.startActivity(i);
+
+
         //Log.d("Hasil prefences", sharedPreferences.getString("kota", "Indonesia"));
 
 

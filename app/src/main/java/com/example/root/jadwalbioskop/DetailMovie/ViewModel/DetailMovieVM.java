@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.databinding.BindingAdapter;
+import android.databinding.ObservableBoolean;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
@@ -11,6 +12,7 @@ import android.os.Build;
 import android.support.annotation.RequiresApi;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -41,6 +43,7 @@ public class DetailMovieVM extends GitsVM {
     public DetailAdapter detailAdapter;
     public LinearLayoutManager linearLayoutManager;
     private static Context ctx;
+    public ObservableBoolean isgone = new ObservableBoolean();
 
     public DetailMovieVM(Context context, DetailMovieDao dao) {
         super(context);
@@ -49,6 +52,8 @@ public class DetailMovieVM extends GitsVM {
         genre = dao.getGenre();
         duration = dao.getDuration();
         ctx = mContext;
+
+        isgone.set(true);
 
         jadwal.addAll(dao.getJadwal());
         detailAdapter = new DetailAdapter(jadwal);
@@ -76,5 +81,22 @@ public class DetailMovieVM extends GitsVM {
                 .load(url)
                 .fit()
                 .into(iv);
+    }
+
+    public void onClickCollapsing(){
+        if (isgone.get()){
+            isgone.set(false);
+        }else {
+            isgone.set(true);
+        }
+    }
+
+    @BindingAdapter({"onCollapsing"})
+    public static void RecycleViewCollapsing(RecyclerView recyclerView,Boolean bool){
+        if(bool){
+            recyclerView.setVisibility(View.GONE);
+        }else{
+            recyclerView.setVisibility(View.VISIBLE);
+        }
     }
 }

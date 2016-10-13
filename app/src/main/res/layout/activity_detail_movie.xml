@@ -98,13 +98,15 @@
                     android:background="#f5aa14"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="List Bioskop"/>
+                    android:text="List Bioskop"
+                    android:onClick="@{()->vm.onClickCollapsing()}"/>
 
                 <android.support.v7.widget.RecyclerView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     app:layoutManager="@{vm.linearLayoutManager}"
-                    app:adapter="@{vm.detailAdapter}">
+                    app:adapter="@{vm.detailAdapter}"
+                    app:onCollapsing="@{vm.isgone}">
                 </android.support.v7.widget.RecyclerView>
                 <Button
                     android:layout_marginTop="50dp"

@@ -21,19 +21,22 @@
             android:layout_margin="10dp"
             android:orientation="vertical"
             android:padding="10dp"
-            android:elevation="10dp">
+            android:elevation="10dp"
+            android:descendantFocusability="beforeDescendants"
+            android:focusableInTouchMode="true">
 
             <android.support.design.widget.TextInputLayout
                 android:background="@android:color/transparent"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColorHint="#fff">
+                android:textColorHint="#424242">
                 <EditText
                     android:id="@+id/binded"
                     android:textColor="#000"
                     android:background="@android:color/transparent"
                     android:hint="Find Your City"
                     android:padding="10dp"
+                    android:textColorHint="@android:color/holo_blue_dark"
                     android:paddingTop="20dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"

@@ -41,11 +41,14 @@ public class MapsActivityVM extends GitsVM{
 
     public MapsActivityVM(final Context context, FragmentManager fragmentManager, String city, String bioskop1) {
         super(context);
+        this.kota = city;
+        this.bioskop = bioskop1;
+        Log.d("Hasil Replace", " => "+bioskop1.replace("XII", "Mall"));
+
         SupportMapFragment supportMapFragment = (SupportMapFragment) fragmentManager
                 .findFragmentById(R.id.mapsDiActivity_Fragment);
 
-        this.kota = city;
-        this.bioskop = bioskop1;
+
 
         click = new View.OnClickListener() {
             @Override
@@ -53,6 +56,7 @@ public class MapsActivityVM extends GitsVM{
                 ((Activity) mContext).finish();
             }
         };
+
         supportMapFragment.getMapAsync(new OnMapReadyCallback() {
             @Override
             public void onMapReady(GoogleMap googleMap) {

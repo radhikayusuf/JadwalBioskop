@@ -47,6 +47,9 @@ public class DetailMovieVM extends GitsVM {
 
     public DetailMovieVM(Context context, DetailMovieDao dao) {
         super(context);
+
+
+
         poster = dao.getPoster();
         title = dao.getMovie();
         genre = dao.getGenre();
